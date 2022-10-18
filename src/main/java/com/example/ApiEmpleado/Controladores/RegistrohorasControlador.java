@@ -34,7 +34,14 @@ public class RegistrohorasControlador {
     @GetMapping("/consulta/{id}")
     public Optional<RegistrohorasModelo> consultarPorId(@PathVariable("id") Long id){
         return servicio.consultarPorId(id);
+ 
     }
+
+    @GetMapping("/consulta/{cedula}")
+    public Optional<RegistrohorasModelo> consultarPorCedula(@PathVariable("cedula") String cedula){
+        return servicio.consultarPorCedula(cedula);
+    }
+
 
     @DeleteMapping("/eliminar/{id}")
     public boolean eliminarRegistro(@PathVariable("id") Long id){

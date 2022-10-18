@@ -26,6 +26,10 @@ public class RegistrohorasServicio {
         return repositorio.findById(id);
     }
 
+    public Optional<RegistrohorasModelo> consultarPorCedula(String cedula){
+        return repositorio.findByCedula(cedula);
+    }
+
     public boolean eliminarRegistro(Long id){
         if(repositorio.existsById(id)){
             repositorio.deleteById(id);
