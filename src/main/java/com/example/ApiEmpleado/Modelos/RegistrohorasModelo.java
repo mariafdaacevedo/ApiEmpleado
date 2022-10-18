@@ -1,5 +1,7 @@
 package com.example.ApiEmpleado.Modelos;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +20,7 @@ public class RegistrohorasModelo {
     private String nombre;
     private String cedula;
     private String cargo;
+    private Date fecha;
     private Long horastrabajadas;
     private String estado;
 
@@ -45,6 +48,14 @@ public class RegistrohorasModelo {
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
+    public Date getFecha(){
+        return fecha;
+    }
+
+    public void setFecha(Date fecha){
+        this.fecha=fecha;
+    }
+
     public Long getHorastrabajadas() {
         return horastrabajadas;
     }
@@ -57,6 +68,7 @@ public class RegistrohorasModelo {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
 
     
 }
