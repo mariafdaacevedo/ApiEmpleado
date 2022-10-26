@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="js/jquery-3.6.1.js"></script>
+<script>
+    $(function(){
+        $("#mostrar").click(function(){
+            var endpoint="http://localhost:8080/empleado/vertodos";
+
+            $.get(endpoint,function(datos){
+                    for(var i=0;i=0<datos.length;i++){
+                        var fila="<tr><td>"+datos[i].id+"</td><td>"+datos[i].nombre+"</td><td>"+datos[i].cedula+"</td><td>"+datos[i].telefono+"</td><td>"+datos[i].correo+"</td><td>"+datos[i].cargo+"</td><td>"+datos[i].salariobase+"</td><td>"+datos[i].nombre+"</td><td>"+datos[i].cedula+"</td><td>"+datos[i].telefono+"</td></tr>";
+                        $("#bodytabla").append(fila);
+                    }           
+
+            })
+        })
+    })
+</script>
+<body>
+    <input type="button" id="mostrar" value="VER EMPLEADOS">
+    <table border="1">
+        <thead>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>CEDULA</th>
+            <th>TELEFONO</th>
+            <th>CORREO</th>
+            <th>CARGO</th>
+            <th>SALARIOBASE</th>
+        </thead>
+        <tbody id="bodytabla">
+
+        </tbody>
+    </table>
+</body>
+</html>

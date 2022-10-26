@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.6.1.js"></script>
+    <script>
+        $(function(){
+            $("#buscarregistrohoras").click(function(){
+                var id=document.querySelector("#idregistrohoras").value;
+                var endpoint="http://localhost:8080/registro/consulta/"+id;
+
+                $.get(endpoint,function(registrohoras){
+                    $("#cuerpotabla").html("");
+                    var fila="<tr><td>"+registrohoras.id+"</td><td>"+registrohoras.nombre+"</td><td>"+registrohoras.cedula+"</td><td>"+registrohoras.cargo+"</td><td>"+registrohoras.fecha+"</td><td>"+registrohoras.horastrabajadas+"</td><td>"+registrohoras.estado+"</td></tr>";
+                    $("#cuerpotabla").append(fila);
+
+                })
+
+            })
+        })
+    </script>
+
+</head>
+<body>
+    <label>Ingrese el ID del Registro de horas</label>
+    <input type="text" id="idregistrohoras">
+    <input type="button" id="buscarregistrohoras" value="Buscar...">
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>CEDULA</th>
+            <th>CARGO</th>
+            <th>FECHA</th>
+            <th>HORASTRABAJADAS</th>
+            <th>ESTADO</th>
+        </thead>
+        <tbody id="cuerpotabla">
+
+        </tbody>
+    </table>
+    
+</body>
+</html>

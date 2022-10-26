@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.6.1.js"></script>
+    <script>
+        $(function(){
+
+            $("#guardar").click(function(){
+                var nombre=document.querySelector("#nombre").value;
+                var cedula=document.querySelector("#cedula").value;
+                var telefono=document.querySelector("#telefono").value;
+                var correo=document.querySelector("#correo").value;
+                var cargo=document.querySelector("#cargo").value;
+                var salariobase=document.querySelector("#salariobase").value;
+                //console.log(nombre+"-"+cedula+"-"+telefono+"-"+correo+"-"+cargo+"-"+salariobase);
+                var endpoint="http://localhost:8080/empleado/guardar";
+                
+                fetch(endpoint,{
+                    method:"POST",
+                    mode:"cors",
+                    headers:{"Content-type":"application/json"},
+                    body:JSON.stringify({nombre,cedula,telefono,correo,cargo,salariobase})
+                }).then(response=>response.json(alert("Elemento guardado!!")))
+                
+
+            })
+           
+        })
+
+    </script>
+</head>
+<body>
+    <h1>REGISTRAR EMPLEADO</h1>
+    <table>
+        <tr>
+            <td>Nombre</td>
+            <td><input type="text" id="nombre"></td>
+        </tr>
+        <tr>
+            <td>Cedula</td>
+            <td><input type="text" id="cedula"></td>
+        </tr>
+        <tr>
+            <td>Telefono</td>
+            <td><input type="text" id="telefono"></td>
+        </tr>
+        <tr>
+            <td>Correo</td>
+            <td><input type="email" id="correo"></td>
+        </tr>
+        <tr>
+            <td>Cargo</td>
+            <td><input type="text" id="cargo"></td>
+        </tr>
+        <tr>
+            <td>Salariobase</td>
+            <td><input type="number" id="salariobase"></td>
+        </tr>
+        <tr><td><input type="submit" id="guardar" value="Enviar Datos"></td></tr>
+    </table>
+
+</body>
+</html>

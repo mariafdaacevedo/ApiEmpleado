@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.6.1.js"></script>
+    <script>
+        $(function(){
+
+            $("#guardar").click(function(){
+                var nombre=document.querySelector("#nombre").value;
+                var cedula=document.querySelector("#cedula").value;
+                var cargo=document.querySelector("#cargo").value;
+                var fecha=document.querySelector("#fecha").value;
+                var horastrabajadas=document.querySelector("#horastrabajadas").value;
+                var estado=document.querySelector("#estado").value;
+                //console.log(nombre+"-"+cedula+"-"+cargo+"-"+fecha+"-"+horastrabajadas+"-"+estado);
+                var endpoint="http://localhost:8080/registro/guardar";
+                
+                fetch(endpoint,{
+                    method:"POST",
+                    mode:"cors",
+                    headers:{"Content-type":"application/json"},
+                    body:JSON.stringify({nombre,cedula,cargo,fecha,horastrabajadas,estado})
+                }).then(response=>response.json(alert("Elemento guardado!!")))
+                
+
+            })
+           
+        })
+
+    </script>
+</head>
+<body>
+    <h1>INSERTAR REGISTRO DE HORAS</h1>
+    <table>
+        <tr>
+            <td>Nombre</td>
+            <td><input type="text" id="nombre"></td>
+        </tr>
+        <tr>
+            <td>Cedula</td>
+            <td><input type="text" id="cedula"></td>
+        </tr>
+        <tr>
+            <td>Cargo</td>
+            <td><input type="text" id="cargo"></td>
+        </tr>
+        <tr>
+            <td>Fecha</td>
+            <td><input type="text" id="fecha"></td>
+        </tr>
+        <tr>
+            <td>Horastrabajadas</td>
+            <td><input type="number" id="horastrabajadas"></td>
+        </tr>
+        <tr>
+            <td>Estado</td>
+            <td><input type="text" id="estado"></td>
+        </tr>
+        <tr><td><input type="submit" id="guardar" value="Enviar Datos"></td></tr>
+    </table>
+</body>
+</html>

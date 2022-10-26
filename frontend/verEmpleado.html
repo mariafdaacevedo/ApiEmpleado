@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.6.1.js"></script>
+    <script>
+        $(function(){
+            $("#buscarempleado").click(function(){
+                var id=document.querySelector("#idempleado").value;
+                var endpoint="http://localhost:8080/empleado/consulta/"+id;
+
+                $.get(endpoint,function(empleado){
+                    $("#cuerpotabla").html("");
+                    var fila="<tr><td>"+empleado.id+"</td><td>"+empleado.nombre+"</td><td>"+empleado.cedula+"</td><td>"+empleado.telefono+"</td><td>"+empleado.correo+"</td><td>"+empleado.cargo+"</td><td>"+empleado.salariobase+"</td></tr>";
+                    $("#cuerpotabla").append(fila);
+
+                })
+
+            })
+        })
+    </script>
+
+</head>
+<body>
+    <label>Ingrese el ID del Empleado</label>
+    <input type="text" id="idempleado">
+    <input type="button" id="buscarempleado" value="Buscar...">
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>CEDULA</th>
+            <th>TELEFONO</th>
+            <th>CORREO</th>
+            <th>CARGO</th>
+            <th>SALARIOBASE</th>
+        </thead>
+        <tbody id="cuerpotabla">
+
+        </tbody>
+    </table>
+
+</body>
+</html>
