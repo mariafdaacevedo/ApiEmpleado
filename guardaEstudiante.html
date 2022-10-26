@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.6.1.js"></script>
+    <script>
+        $(function(){
+            $("#guardar").click(function(){
+                var nombre=document.querySelector("#nombre").value;
+                var apellido=document.querySelector("#apellido").value;
+                var telefono=document.querySelector("#telefono").value;
+                var correo=document.querySelector("#correo").value;
+                var direccion=document.querySelector("#direccion").value;
+                var endpoint="http://localhost:8080/estudiante/guardar"
+
+                fetch(endpoint,{
+                method:"POST",
+                mode:"cors",
+                headers:{"Content-type":"aplication/json"},
+                body:JSON.stringify({nombre,apellido,telefono,correo,direccion})
+
+                }).then(response=>response.json(alert(response.status)))
+
+})
+
+
+})
+    </script>
+
+</head>
+<body>
+    <h1>REGISTRAR EMPLEADO</h1>
+        <table>
+            <tr>
+                <td>Nombre</td>
+                <td><input type="text" id="nombre"></td>
+            </tr>
+            <tr>
+                <td>Apellido</td>
+                <td><input type="text" id="apellido"></td>
+            </tr>
+            <tr>
+                <td>Telefono</td>
+                <td><input type="text" id="telefono"></td>
+            </tr>
+            <tr>
+                <td>Correo</td>
+                <td><input type="email" id="correo"></td>
+            </tr>
+            <tr>
+                <td>Direccion</td>
+                <td><input type="text" id="direccion"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" id="guardar" value="Enviar datos"></td>
+            </tr>
+        </table>
+</body>
+</html>
