@@ -19,8 +19,6 @@ import com.example.ApiEmpleado.Servicios.EmpleadoServicio;
 
 @RestController
 @RequestMapping("/empleado")
-
-
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE})
 public class EmpleadoControlador {
     @Autowired
